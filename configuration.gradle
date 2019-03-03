@@ -1,0 +1,34 @@
+ext {
+  android = [
+      compileSdkVersion: 28,
+      targetSdkVersion: 28,
+      minSdkVersion: 21,
+      buildToolsVersion: "28.0.2",
+      applicationId: "com.insign.cleanarchitecture",
+  ]
+
+  app = [
+      versionCode: 1,
+      versionName: "1.0.0",
+  ]
+
+  libraries = [
+      supportVersion: "28.0.0",
+      retrofitVersion: "2.4.0",
+      okhttpVersion: "3.9.0",
+      rxjavaVersion: "2.1.0",
+      rxkotlinVersion: "2.3.0",
+      rxandroidVersion: "2.0.2",
+      gsonVersion: "2.8.5",
+      appbaseVersion: "1.0.5",
+      impermissionVersion: "1.0.2",
+      imdebuggerVersion: "1.0.2",
+      constraintLayoutVersion: "1.1.3",
+      imlistVersion: "1.0.0"
+  ]
+
+  artifactory = [
+      libPath: "insign/mobility/libraries",
+      packageName: "insign.mobility.libraries",
+  ]
+}

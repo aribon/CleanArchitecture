@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion 28
+
+  publishNonDefault true
+
+  defaultConfig {
+    minSdkVersion 21
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+    }
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  flavorDimensions "api"
+  productFlavors {
+    omdp {
+      dimension "api"
+      buildConfigField("String", "API_URL", "'http://www.omdbapi.com'")
+      buildConfigField("String", "API_KEY", "'3c70226e'")
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+  implementation project(':domain')
+
+  implementation "com.android.support:appcompat-v7:${libraries.supportVersion}"
+
+  implementation "io.reactivex.rxjava2:rxandroid:${libraries.rxandroidVersion}"
+  // Because RxAndroid releases are few and far between, it is recommended you also
+  // explicitly depend on RxJava's latest version for bug fixes and new features.
+  implementation "io.reactivex.rxjava2:rxjava:${libraries.rxjavaVersion}"
+
+  implementation "com.squareup.retrofit2:retrofit:${libraries.retrofitVersion}"
+  implementation "com.squareup.retrofit2:converter-gson:${libraries.retrofitVersion}"
+  implementation "com.squareup.retrofit2:adapter-rxjava2:${libraries.retrofitVersion}"
+  implementation "com.squareup.retrofit2:converter-moshi:${libraries.retrofitVersion}"
+
+  implementation "com.squareup.okhttp3:logging-interceptor:${libraries.okhttpVersion}"
+  implementation "com.squareup.okhttp3:okhttp:${libraries.okhttpVersion}"
+
+  implementation "com.google.code.gson:gson:${libraries.gsonVersion}"
+
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'com.android.support.test:runner:1.0.2'
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+  mavenCentral()
+}
